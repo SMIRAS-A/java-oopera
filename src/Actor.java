@@ -12,11 +12,10 @@ public class Actor extends Person {
 
     @Override
     public String toString() {
-        return "Актёр {" +
-                "Имя = " + getName() +
-                ", Фамилия = " + getSurname() +
-                ", Пол = " + getGender() +
-                ", Рост = " + height + " см." +
-                '}';
+        return "Актёр {"
+                + "Имя = " + getName()
+                + ", Фамилия = " + getSurname()
+                + ", Пол = " + getGender()
+                + ", Рост = " + height + " см.}";
     }
 }

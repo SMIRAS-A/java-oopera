@@ -16,11 +16,10 @@ public class Director extends Person {
 
     @Override
     public String toString() {
-        return "Режиссёр {" +
-                "Имя = " + getName() +
-                ", Фамилия = " + getSurname() +
-                ", Пол = " + getGender() +
-                ", Количество поставленных спектаклей = " + numberOfShows +
-                '}';
+        return "Режиссёр {"
+                + "Имя = " + getName()
+                + ", Фамилия = " + getSurname()
+                + ", Пол = " + getGender()
+                + ", Количество поставленных спектаклей = " + numberOfShows + "}";
     }
 }

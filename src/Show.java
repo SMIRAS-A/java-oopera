@@ -36,8 +36,8 @@ public class Show {
     public void showDetails() {
         System.out.println("Название: " + title);
         System.out.println("Продолжительность: " + duration + " минут");
-        System.out.println("Режиссер: " + director.getName() + " " + director.getSurname() +
-                " (поставленных шоу: " + director.getNumberOfShows() + ")");
+        System.out.println("Режиссер: " + director.getName() + " " + director.getSurname()
+                + " (поставленных шоу: " + director.getNumberOfShows() + ")");
         System.out.println("Актеры:");
         for (Actor actor : listOfActors) {
             System.out.println("  - " + actor);
@@ -122,8 +122,9 @@ public class Show {
                     }
                     System.out.println("Доступные режиссеры:");
                     for (int i = 0; i < directors.size(); i++) {
-                        System.out.println((i + 1) + " - " + directors.get(i).getName() + " " +
-                                directors.get(i).getSurname() + " (шоу: " + directors.get(i).getNumberOfShows() + ")");
+                        System.out.println((i + 1) + " - " + directors.get(i).getName() + " "
+                                + directors.get(i).getSurname() + " (шоу: " + directors.get(i).getNumberOfShows()
+                                + ")");
                     }
                     System.out.println("Выберите номер режиссера:");
                     int directorIndex = scanner.nextInt() - 1;
@@ -246,9 +247,9 @@ public class Show {
         scanner.nextLine();
 
         boolean actorExists = actors.stream()
-                .anyMatch(actor -> actor.getName().equals(name) &&
-                        actor.getSurname().equals(surname) &&
-                        actor.getHeight() == height);
+                .anyMatch(actor -> actor.getName().equals(name)
+                        && actor.getSurname().equals(surname)
+                        && actor.getHeight() == height);
 
         if (actorExists) {
             System.out.println("Такой актёр уже есть, его добавить нельзя");
@@ -352,8 +353,8 @@ public class Show {
         }
 
         showActors.set(actorToReplaceIndex, newActor);
-        System.out.println("Актёр " + actorToReplace.getName() + " " + actorToReplace.getSurname() +
-                " заменён на " + newActor.getName() + " " + newActor.getSurname() +
-                " в шоу '" + selectedShow.getTitle() + "'");
+        System.out.println("Актёр " + actorToReplace.getName() + " " + actorToReplace.getSurname()
+                + " заменён на " + newActor.getName() + " " + newActor.getSurname()
+                + " в шоу " + selectedShow.getTitle());
     }
 }
