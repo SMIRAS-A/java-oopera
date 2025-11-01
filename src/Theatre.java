@@ -1,39 +1,56 @@
-import java.util.Scanner;
-
 public class Theatre {
-
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Show showManager = new Show();
 
-        while (true) {
-            printMainMenu();
-            byte cmd = scanner.nextByte();
+        Actor actor1 = new Actor("Артём", "Смирнов", Gender.MALE, 180);
+        Actor actor2 = new Actor("Ирина", "Смирнова", Gender.FEMALE, 165);
+        Actor actor3 = new Actor("Сергей", "Скудра", Gender.MALE, 182);
 
-            switch (cmd) {
-                case 1:
-                    showManager.addShow();
-                    break;
-                case 2:
-                    showManager.showAShow();
-                    break;
-                case 3:
-                    showManager.replaceActorInShow();
-                    break;
-                case 4:
-                    System.out.println("Выход из программы...");
-                    return;
-                default:
-                    System.out.println("Неверная команда!");
-            }
-        }
-    }
+        Director director1 = new Director("Иван", "Малюк", Gender.MALE, 158);
+        Director director2 = new Director("Ольга", "Свиридова", Gender.FEMALE, 3);
 
-    public static void printMainMenu() {
-        System.out.println("Введите команду: "
-                + "\n1 - Создать шоу"
-                + "\n2 - Показать шоу"
-                + "\n3 - Заменить актёра"
-                + "\n4 - Выход из программы");
+        String musicAuthor = "Энди Дэрисов";
+        String choreographer = "Альб Энштейнич";
+
+        Show regularShow = new Show("Спектакль", 134, director1);
+        Opera opera = new Opera("Фантом", 175, director2, musicAuthor
+                , "Текст либретто оперы Фантом", 666);
+        Ballet ballet = new Ballet("Лебединое озеро", 100, director1, musicAuthor
+                , "Текст либретто балета Лебединое озеро", choreographer);
+
+        System.out.println("РАСПРЕДЕЛЯЕМ АКТЁРОВ ПО ШОУ");
+        regularShow.addActor(actor1);
+        regularShow.addActor(actor2);
+
+        opera.addActor(actor2);
+        opera.addActor(actor3);
+
+        ballet.addActor(actor1);
+        ballet.addActor(actor3);
+
+        System.out.println("\nЗАМЕНА АКТЁРА");
+        ballet.replaceActor(actor2, "Смирнов");
+
+        System.out.println("\nПОПЫТКА ЗАМЕНИТЬ НЕСУЩЕСТВУЮЩЕГО АКТЁРА");
+        opera.replaceActor(actor1, "Доздрапермов");
+
+        System.out.println("\nСПИСКИ АКТЁРОВ ПОСЛЕ ЗАМЕНЫ");
+        ballet.printActorsList();
+
+        System.out.println("\nИНФОРМАЦИЯ О РЕЖИССЁРАХ");
+        regularShow.printDirectorInfo();
+        opera.printDirectorInfo();
+
+        System.out.println("\nЛИБРЕТТО");
+        opera.printLibretto();
+        System.out.println();
+        ballet.printLibretto();
+
+        System.out.println("\nДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ");
+        System.out.println("Для оперы Фантом:");
+        opera.printMusicInfo();
+        System.out.println("Размер хора: " + opera.getChoirSize() + " человек");
+        System.out.println("\nДля балета Лебединое озеро:");
+        ballet.printMusicInfo();
+        ballet.printChoreographerInfo();
     }
 }

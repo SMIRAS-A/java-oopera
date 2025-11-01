@@ -1,20 +1,13 @@
-import java.util.ArrayList;
-
-public class Ballet extends MusicalShow {
+class Ballet extends MusicalShow {
     private String choreographer;
 
-    public Ballet(String title, int duration, Director director,
-                  ArrayList<Actor> listOfActors, String musicAuthor,
-                  String librettoText, String choreographer) {
-        super(title, duration, director, listOfActors, musicAuthor, librettoText);
+    public Ballet(String title, int duration, Director director, String musicAuthor, String librettoText
+            , String choreographer) {
+        super(title, duration, director, musicAuthor, librettoText);
         this.choreographer = choreographer;
     }
 
-
-    @Override
-    public void showDetails() {
-        super.showDetails();
+    public void printChoreographerInfo() {
         System.out.println("Хореограф: " + choreographer);
-        System.out.println("Тип: Балет");
     }
 }

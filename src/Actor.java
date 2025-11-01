@@ -6,16 +6,22 @@ public class Actor extends Person {
         this.height = height;
     }
 
-    public int getHeight() {
-        return height;
+    @Override
+    public String toString() {
+        return name + " " + surname + " (" + height + " см.)";
     }
 
     @Override
-    public String toString() {
-        return "Актёр {"
-                + "Имя = " + getName()
-                + ", Фамилия = " + getSurname()
-                + ", Пол = " + getGender()
-                + ", Рост = " + height + " см.}";
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Actor actor = (Actor) o;
+        return height == actor.height;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), height);
     }
 }
